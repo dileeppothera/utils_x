@@ -1,0 +1,28 @@
+name: utils_x
+description: "A collection of powerful Flutter widget extensions for cleaner, more expressive code. Add press effects, padding, styling, and more with simple chainable methods."
+version: 0.0.1
+homepage: https://github.com/dileep/utils_x
+repository: https://github.com/dileep/utils_x
+issue_tracker: https://github.com/dileep/utils_x/issues
+
+topics:
+  - widgets
+  - extensions
+  - ui
+  - utilities
+  - helpers
+
+environment:
+  sdk: ^3.0.0
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
