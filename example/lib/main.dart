@@ -106,7 +106,7 @@ class InteractionDemoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildHeader(
-            title: '👆 Interaction Extensions',
+            title: 'Interaction Extensions',
             subtitle: 'Add press effects, taps, and gestures',
           ),
 
@@ -123,7 +123,7 @@ class InteractionDemoPage extends StatelessWidget {
                   label: 'Like',
                 ).pressEffect(
                   scale: 0.85, // More visible scale
-                  onTap: () => _showSnackbar(context, '❤️ Liked!'),
+                  onTap: () => _showSnackbar(context, 'Liked!'),
                 ),
                 _buildDemoCard(
                   color: const Color(0xFF10B981),
@@ -131,7 +131,7 @@ class InteractionDemoPage extends StatelessWidget {
                   label: 'Share',
                 ).pressEffect(
                   scale: 0.8, // More visible scale
-                  onTap: () => _showSnackbar(context, '📤 Shared!'),
+                  onTap: () => _showSnackbar(context, 'Shared!'),
                 ),
                 _buildDemoCard(
                   color: const Color(0xFFF59E0B),
@@ -140,7 +140,7 @@ class InteractionDemoPage extends StatelessWidget {
                 ).pressEffect(
                   scale: 0.75, // Most visible scale
                   duration: const Duration(milliseconds: 150),
-                  onTap: () => _showSnackbar(context, '🔖 Saved!'),
+                  onTap: () => _showSnackbar(context, 'Saved!'),
                 ),
               ],
             ),
@@ -168,7 +168,7 @@ class InteractionDemoPage extends StatelessWidget {
                   ),
                 ),
               ),
-            ).onTap(() => _showSnackbar(context, '✅ Tapped!')),
+            ).onTap(() => _showSnackbar(context, 'Tapped!')),
           ),
 
           // Ripple Effect Demo
@@ -197,7 +197,7 @@ class InteractionDemoPage extends StatelessWidget {
                     ),
                   ),
                 ).ripple(
-                  onTap: () => _showSnackbar(context, '🌊 Ripple!'),
+                  onTap: () => _showSnackbar(context, 'Ripple!'),
                   splashColor: const Color(0xFF6366F1).withValues(alpha: 0.3),
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -240,7 +240,7 @@ class InteractionDemoPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                ).onLongPress(() => _showSnackbar(context, '👆 Long Pressed!')),
+                ).onLongPress(() => _showSnackbar(context, 'Long Pressed!')),
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
@@ -257,9 +257,7 @@ class InteractionDemoPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                ).onDoubleTap(
-                  () => _showSnackbar(context, '👆👆 Double Tapped!'),
-                ),
+                ).onDoubleTap(() => _showSnackbar(context, 'Double Tapped!')),
               ],
             ),
           ),
@@ -284,7 +282,7 @@ class LayoutDemoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildHeader(
-            title: '📐 Layout Extensions',
+            title: 'Layout Extensions',
             subtitle: 'Padding, centering, sizing shortcuts',
           ),
 
@@ -564,7 +562,7 @@ class StylingDemoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildHeader(
-            title: '🎨 Styling Extensions',
+            title: 'Styling Extensions',
             subtitle: 'Shadows, gradients, borders, effects',
           ),
 
@@ -933,7 +931,7 @@ class _VisibilityDemoPageState extends State<VisibilityDemoPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildHeader(
-            title: '👁️ Visibility Extensions',
+            title: 'Visibility Extensions',
             subtitle: 'Conditional rendering with animations',
           ),
 
@@ -1083,7 +1081,7 @@ class _VisibilityDemoPageState extends State<VisibilityDemoPage> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Text(
-                          'Premium Content ✨',
+                          'Premium Content',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -1221,7 +1219,7 @@ class _VisibilityDemoPageState extends State<VisibilityDemoPage> {
                         ),
                       ),
                     )
-                    .onTap(() => _showSnackbar(context, '🎉 You tapped me!'))
+                    .onTap(() => _showSnackbar(context, 'You tapped me!'))
                     .absorbPointer(_isPointerAbsorbed),
                 const SizedBox(height: 8),
                 Text(

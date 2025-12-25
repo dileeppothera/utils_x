@@ -7,16 +7,16 @@ Add press effects, padding, styling, and more with simple chainable methods.
 [![pub package](https://img.shields.io/pub/v/utils_x.svg)](https://pub.dev/packages/utils_x)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## ✨ Features
+## Features
 
-- 🎯 **Simple API** - Chainable extensions that read naturally
-- 🎨 **Rich Styling** - Shadows, gradients, borders, blur effects
-- 👆 **Interaction Effects** - Press effects, tap handlers, hover states
-- 📐 **Layout Helpers** - Padding, centering, sizing shortcuts
-- 👁️ **Visibility Control** - Conditional rendering with animations
-- 📱 **Platform Ready** - Works on mobile, web, and desktop
+- **Simple API** - Chainable extensions that read naturally
+- **Rich Styling** - Shadows, gradients, borders, blur effects
+- **Interaction Effects** - Press effects, tap handlers, hover states
+- **Layout Helpers** - Padding, centering, sizing shortcuts
+- **Visibility Control** - Conditional rendering with animations
+- **Platform Ready** - Works on mobile, web, and desktop
 
-## 📦 Installation
+## Installation
 
 Add to your `pubspec.yaml`:
 
@@ -30,7 +30,7 @@ Then run:
 flutter pub get
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ```dart
 import 'package:utils_x/utils_x.dart';
@@ -47,16 +47,16 @@ GestureDetector(
   ),
 )
 
-// After (clean & expressive) ✨
+// After (clean & expressive)
 Text('Hello')
     .padding(16)
     .rounded(12)
     .pressEffect(onTap: () => print('Pressed!'))
 ```
 
-## 📚 Extensions Reference
+## Extensions Reference
 
-### 👆 Interaction Extensions
+### Interaction Extensions
 
 | Extension | Description |
 |-----------|-------------|
@@ -83,7 +83,7 @@ Icon(Icons.favorite).onTap(() => likePost())
 Container(child: Text('Tap me')).ripple(onTap: () {})
 ```
 
-### 📐 Layout Extensions
+### Layout Extensions
 
 | Extension | Description |
 |-----------|-------------|
@@ -112,7 +112,7 @@ Text('Hello')
 Text('Expand me').expanded(flex: 2)
 ```
 
-### 🎨 Styling Extensions
+### Styling Extensions
 
 | Extension | Description |
 |-----------|-------------|
@@ -151,7 +151,7 @@ Text('Gradient').withGradient(
 )
 ```
 
-### 👁️ Visibility Extensions
+### Visibility Extensions
 
 | Extension | Description |
 |-----------|-------------|
@@ -177,7 +177,7 @@ Content().fadeVisible(isLoaded)
 FloatingButton().scaleVisible(isExpanded)
 ```
 
-### 🧰 General Extensions
+### General Extensions
 
 | Extension | Description |
 |-----------|-------------|
@@ -198,7 +198,7 @@ Image.asset('photo.jpg').hero('photo_1')
 Icon(Icons.add).semanticsLabel('Add new item')
 ```
 
-## 🔗 Chaining Extensions
+## Chaining Extensions
 
 Extensions can be chained for powerful, readable code:
 
@@ -212,14 +212,14 @@ Card(child: Text('Premium Feature'))
     .hero('premium_card')
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please read our contributing guidelines before submitting a PR.
 
-## 📄 License
+## License
 
 MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-Developed with ❤️ by **Dileep P** for the Flutter community
+Developed by **Dileep P** for the Flutter community

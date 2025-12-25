@@ -11,6 +11,6 @@ void main() {
     await tester.pumpWidget(const UtilsXExampleApp());
 
     // Verify that the app loads with the Interactions page header
-    expect(find.text('👆 Interaction Extensions'), findsOneWidget);
+    expect(find.text('Interaction Extensions'), findsOneWidget);
   });
 }
