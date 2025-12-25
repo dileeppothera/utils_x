@@ -1247,6 +1247,7 @@ class _VisibilityDemoPageState extends State<VisibilityDemoPage> {
 
 Widget _buildHeader({required String title, required String subtitle}) {
   return Container(
+    width: double.infinity,
     decoration: BoxDecoration(
       gradient: LinearGradient(
         colors: [
@@ -1259,10 +1260,11 @@ Widget _buildHeader({required String title, required String subtitle}) {
     ),
     padding: const EdgeInsets.all(45),
     child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
           title,
+          textAlign: TextAlign.center,
           style: const TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.bold,
@@ -1272,6 +1274,7 @@ Widget _buildHeader({required String title, required String subtitle}) {
         const SizedBox(height: 4),
         Text(
           subtitle,
+          textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 14,
             color: Colors.white.withValues(alpha: 0.7),
@@ -1288,6 +1291,7 @@ Widget _buildSection({
   required Widget child,
 }) {
   return Container(
+    width: double.infinity,
     margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     padding: const EdgeInsets.all(16),
     decoration: BoxDecoration(
