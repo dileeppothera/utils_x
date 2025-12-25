@@ -1,4 +1,5 @@
 /// A collection of powerful Flutter widget extensions for cleaner, more expressive code.
+/// Developed by Dileep P.
 ///
 /// Utils X provides chainable widget extensions that make your Flutter code
 /// more readable and reduce boilerplate.

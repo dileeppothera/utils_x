@@ -1,6 +1,8 @@
 # utils_x
 
-A collection of powerful Flutter widget extensions for cleaner, more expressive code. Add press effects, padding, styling, and more with simple chainable methods.
+A collection of powerful Flutter widget extensions for cleaner, more expressive code.
+Developed by Dileep P.
+Add press effects, padding, styling, and more with simple chainable methods.
 
 [![pub package](https://img.shields.io/pub/v/utils_x.svg)](https://pub.dev/packages/utils_x)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -220,4 +222,4 @@ MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-Made with ❤️ for the Flutter community
+Developed with ❤️ by **Dileep P** for the Flutter community
