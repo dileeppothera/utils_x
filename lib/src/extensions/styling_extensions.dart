@@ -244,7 +244,7 @@ extension StylingExtensions on Widget {
     BorderRadius? borderRadius,
   }) {
     return withShadow(
-      color: color.withOpacity(0.5),
+      color: color.withValues(alpha: 0.5),
       blur: blur,
       spreadRadius: spreadRadius,
       offset: Offset.zero,
