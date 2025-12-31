@@ -247,4 +247,186 @@ extension LayoutExtensions on Widget {
   Widget fullWidth() {
     return SizedBox(width: double.infinity, child: this);
   }
+
+  /// Wraps the widget with SingleChildScrollView.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Column(children: [...]).scrollable()
+  /// ```
+  Widget scrollable({
+    Axis scrollDirection = Axis.vertical,
+    bool reverse = false,
+    EdgeInsetsGeometry? padding,
+    ScrollPhysics? physics,
+    ScrollController? controller,
+  }) {
+    return SingleChildScrollView(
+      scrollDirection: scrollDirection,
+      reverse: reverse,
+      padding: padding,
+      physics: physics,
+      controller: controller,
+      child: this,
+    );
+  }
+
+  /// Positions the widget within a Stack.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Icon(Icons.close).positioned(top: 8, right: 8)
+  /// ```
+  Widget positioned({
+    double? left,
+    double? top,
+    double? right,
+    double? bottom,
+    double? width,
+    double? height,
+  }) {
+    return Positioned(
+      left: left,
+      top: top,
+      right: right,
+      bottom: bottom,
+      width: width,
+      height: height,
+      child: this,
+    );
+  }
+
+  /// Fills all available space in a Stack.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Stack(children: [
+  ///   Image.asset('bg.jpg').positionedFill(),
+  ///   Text('Overlay'),
+  /// ])
+  /// ```
+  Widget positionedFill({
+    double left = 0,
+    double top = 0,
+    double right = 0,
+    double bottom = 0,
+  }) {
+    return Positioned(
+      left: left,
+      top: top,
+      right: right,
+      bottom: bottom,
+      child: this,
+    );
+  }
+
+  /// Wraps the widget with IntrinsicWidth.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Column(children: [...]).intrinsicWidth()
+  /// ```
+  Widget intrinsicWidth({double? stepWidth, double? stepHeight}) {
+    return IntrinsicWidth(
+      stepWidth: stepWidth,
+      stepHeight: stepHeight,
+      child: this,
+    );
+  }
+
+  /// Wraps the widget with IntrinsicHeight.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Row(children: [...]).intrinsicHeight()
+  /// ```
+  Widget intrinsicHeight() {
+    return IntrinsicHeight(child: this);
+  }
+
+  /// Wraps the widget with LimitedBox.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Image.network(url).limitedBox(maxHeight: 200)
+  /// ```
+  Widget limitedBox({
+    double maxWidth = double.infinity,
+    double maxHeight = double.infinity,
+  }) {
+    return LimitedBox(
+      maxWidth: maxWidth,
+      maxHeight: maxHeight,
+      child: this,
+    );
+  }
+
+  /// Wraps the widget with ClipRect.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// OverflowingWidget().clipRect()
+  /// ```
+  Widget clipRect({Clip clipBehavior = Clip.hardEdge}) {
+    return ClipRect(clipBehavior: clipBehavior, child: this);
+  }
+
+  /// Adds custom margin to the widget.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Card().marginOnly(left: 8, top: 16)
+  /// ```
+  Widget marginOnly({
+    double left = 0,
+    double top = 0,
+    double right = 0,
+    double bottom = 0,
+  }) {
+    return Container(
+      margin: EdgeInsets.only(
+        left: left,
+        top: top,
+        right: right,
+        bottom: bottom,
+      ),
+      child: this,
+    );
+  }
+
+  /// Adds horizontal margin to the widget.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Card().marginH(16)
+  /// ```
+  Widget marginH(double horizontal) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: horizontal),
+      child: this,
+    );
+  }
+
+  /// Adds vertical margin to the widget.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Card().marginV(8)
+  /// ```
+  Widget marginV(double vertical) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: vertical),
+      child: this,
+    );
+  }
 }

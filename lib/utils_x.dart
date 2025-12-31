@@ -30,3 +30,4 @@ export 'src/extensions/visibility_extensions.dart';
 
 // Export widgets (if any custom widgets are needed)
 export 'src/widgets/press_effect_widget.dart';
+export 'src/widgets/shimmer_widget.dart';

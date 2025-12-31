@@ -162,4 +162,209 @@ extension WidgetExtensions on Widget {
       },
     );
   }
+
+  /// Wraps the widget with KeyedSubtree for forcing rebuilds.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// MyWidget().keyedSubtree(ValueKey('unique_key'))
+  /// ```
+  Widget keyedSubtree(Key key) {
+    return KeyedSubtree(key: key, child: this);
+  }
+
+  /// Wraps the widget with DecoratedBox.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Text('Hello').decorated(
+  ///   decoration: BoxDecoration(color: Colors.blue),
+  /// )
+  /// ```
+  Widget decorated({
+    required Decoration decoration,
+    DecorationPosition position = DecorationPosition.background,
+  }) {
+    return DecoratedBox(
+      decoration: decoration,
+      position: position,
+      child: this,
+    );
+  }
+
+  /// Wraps the widget with Card.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// ListTile(...).card()
+  /// ```
+  Widget card({
+    Color? color,
+    Color? shadowColor,
+    double? elevation,
+    ShapeBorder? shape,
+    EdgeInsetsGeometry? margin,
+    Clip? clipBehavior,
+  }) {
+    return Card(
+      color: color,
+      shadowColor: shadowColor,
+      elevation: elevation,
+      shape: shape,
+      margin: margin,
+      clipBehavior: clipBehavior,
+      child: this,
+    );
+  }
+
+  /// Wraps the widget with InkWell.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Container(child: Text('Click me')).inkWell(
+  ///   onTap: () => print('Tapped!'),
+  /// )
+  /// ```
+  Widget inkWell({
+    VoidCallback? onTap,
+    VoidCallback? onLongPress,
+    VoidCallback? onDoubleTap,
+    Color? splashColor,
+    Color? highlightColor,
+    Color? hoverColor,
+    BorderRadius? borderRadius,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      onLongPress: onLongPress,
+      onDoubleTap: onDoubleTap,
+      splashColor: splashColor,
+      highlightColor: highlightColor,
+      hoverColor: hoverColor,
+      borderRadius: borderRadius,
+      child: this,
+    );
+  }
+
+  /// Wraps the widget with ExcludeSemantics.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// DecorativeIcon().excludeSemantics()
+  /// ```
+  Widget excludeSemantics([bool excluding = true]) {
+    return ExcludeSemantics(excluding: excluding, child: this);
+  }
+
+  /// Wraps the widget with Focus for focus management.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// TextField().focus(onFocusChange: (hasFocus) => print(hasFocus))
+  /// ```
+  Widget focus({
+    FocusNode? focusNode,
+    bool autofocus = false,
+    void Function(bool)? onFocusChange,
+    bool canRequestFocus = true,
+    bool skipTraversal = false,
+  }) {
+    return Focus(
+      focusNode: focusNode,
+      autofocus: autofocus,
+      onFocusChange: onFocusChange,
+      canRequestFocus: canRequestFocus,
+      skipTraversal: skipTraversal,
+      child: this,
+    );
+  }
+
+  /// Wraps the widget with CustomPaint.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Container().customPaint(painter: MyPainter())
+  /// ```
+  Widget customPaint({
+    CustomPainter? painter,
+    CustomPainter? foregroundPainter,
+    Size size = Size.zero,
+    bool isComplex = false,
+    bool willChange = false,
+  }) {
+    return CustomPaint(
+      painter: painter,
+      foregroundPainter: foregroundPainter,
+      size: size,
+      isComplex: isComplex,
+      willChange: willChange,
+      child: this,
+    );
+  }
+
+  /// Wraps the widget with ColoredBox for a simple background color.
+  ///
+  /// More efficient than Container for just a background color.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Text('Hello').coloredBox(Colors.blue)
+  /// ```
+  Widget coloredBox(Color color) {
+    return ColoredBox(color: color, child: this);
+  }
+
+  /// Wraps the widget with UnconstrainedBox.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// SizedBox(width: 100).unconstrained()
+  /// ```
+  Widget unconstrained({
+    TextDirection? textDirection,
+    AlignmentGeometry alignment = Alignment.center,
+    Axis? constrainedAxis,
+    Clip clipBehavior = Clip.none,
+  }) {
+    return UnconstrainedBox(
+      textDirection: textDirection,
+      alignment: alignment,
+      constrainedAxis: constrainedAxis,
+      clipBehavior: clipBehavior,
+      child: this,
+    );
+  }
+
+  /// Wraps the widget with OverflowBox.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Container(width: 500).overflowBox(maxWidth: 300)
+  /// ```
+  Widget overflowBox({
+    AlignmentGeometry alignment = Alignment.center,
+    double? minWidth,
+    double? maxWidth,
+    double? minHeight,
+    double? maxHeight,
+  }) {
+    return OverflowBox(
+      alignment: alignment,
+      minWidth: minWidth,
+      maxWidth: maxWidth,
+      minHeight: minHeight,
+      maxHeight: maxHeight,
+      child: this,
+    );
+  }
 }

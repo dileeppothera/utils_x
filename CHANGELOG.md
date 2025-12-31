@@ -1,3 +1,52 @@
+## 1.1.0
+
+* **New Widget: ShimmerWidget** - Customizable shimmer loading effect widget
+
+* **New Styling Extensions:**
+  * `glassmorphism()` - Frosted glass effect with blur, transparency, and border
+  * `shimmer()` - Add shimmer loading animation to any widget
+  * `neumorphism()` - Soft UI / neumorphic design effect
+  * `shaderMask()` - Apply gradient to text/icons
+  * `clip()` - Custom clipper support
+  * `glow()` - Enhanced with custom `opacity` parameter
+
+* **New Interaction Extensions:**
+  * `onSwipe()` - Swipe gesture handlers (left, right, up, down)
+  * `draggable()` - Make any widget draggable with drag data
+  * `dragTarget()` - Create drop zones for draggable widgets
+  * `dismissible()` - Swipe to dismiss functionality
+  * `hoverElevation()` - Elevation change on hover (web/desktop)
+
+* **New Layout Extensions:**
+  * `scrollable()` - Wrap in SingleChildScrollView
+  * `positioned()` - Position within a Stack
+  * `positionedFill()` - Fill available space in Stack
+  * `intrinsicWidth()` / `intrinsicHeight()` - Intrinsic sizing
+  * `limitedBox()` - LimitedBox wrapper
+  * `clipRect()` - ClipRect wrapper
+  * `marginOnly()` / `marginH()` / `marginV()` - Additional margin helpers
+
+* **New Visibility Extensions:**
+  * `animatedSwitcher()` - Smooth animated widget switching
+  * `crossFade()` - AnimatedCrossFade wrapper
+  * `rotateVisible()` - Rotation-based visibility animation
+  * `fadeScaleVisible()` - Combined fade + scale visibility
+
+* **New Widget Extensions:**
+  * `keyedSubtree()` - Force widget rebuilds with key
+  * `decorated()` - DecoratedBox shorthand
+  * `card()` - Card wrapper with customization
+  * `inkWell()` - InkWell wrapper
+  * `excludeSemantics()` - Accessibility helper
+  * `focus()` - Focus management
+  * `customPaint()` - CustomPaint wrapper
+  * `coloredBox()` - Efficient background color
+  * `unconstrained()` - UnconstrainedBox wrapper
+  * `overflowBox()` - OverflowBox wrapper
+
+* **Bug Fixes:**
+  * Fixed deprecated `withOpacity()` usage, replaced with `withValues(alpha:)`
+
 ## 1.0.0
 
 * Initial release

@@ -10,10 +10,10 @@ Add press effects, padding, styling, and more with simple chainable methods.
 ## Features
 
 - **Simple API** - Chainable extensions that read naturally
-- **Rich Styling** - Shadows, gradients, borders, blur effects
-- **Interaction Effects** - Press effects, tap handlers, hover states
-- **Layout Helpers** - Padding, centering, sizing shortcuts
-- **Visibility Control** - Conditional rendering with animations
+- **Rich Styling** - Shadows, gradients, borders, blur, glassmorphism, neumorphism, shimmer effects
+- **Interaction Effects** - Press effects, tap handlers, swipe gestures, drag & drop, hover states
+- **Layout Helpers** - Padding, centering, sizing, scrollable, positioned shortcuts
+- **Visibility Control** - Conditional rendering with animations, cross-fade, animated switcher
 - **Platform Ready** - Works on mobile, web, and desktop
 
 ## Installation
@@ -22,7 +22,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  utils_x: ^1.0.0
+  utils_x: ^1.1.0
 ```
 
 Then run:
@@ -66,6 +66,11 @@ Text('Hello')
 | `.onDoubleTap(() {})` | Double tap handler |
 | `.ripple()` | Material ripple effect |
 | `.hoverScale(1.05)` | Scale up on hover (web/desktop) |
+| `.hoverElevation()` | Elevation on hover (web/desktop) |
+| `.onSwipe()` | Swipe gesture handlers |
+| `.draggable()` | Make widget draggable |
+| `.dragTarget()` | Create drop zones |
+| `.dismissible()` | Swipe to dismiss |
 
 ```dart
 // Press effect with options
@@ -73,14 +78,19 @@ MyButton().pressEffect(
   onTap: () => print('Pressed!'),
   scale: 0.95,
   duration: Duration(milliseconds: 100),
-  curve: Curves.easeInOut,
 )
 
-// Simple tap
-Icon(Icons.favorite).onTap(() => likePost())
+// Swipe gestures
+Card(child: Text('Swipe me')).onSwipe(
+  onSwipeLeft: () => print('Swiped left!'),
+  onSwipeRight: () => print('Swiped right!'),
+)
 
-// Material ripple
-Container(child: Text('Tap me')).ripple(onTap: () {})
+// Drag & Drop
+Container(child: Text('Drag me')).draggable<String>(data: 'item_1')
+Container(child: Text('Drop here')).dragTarget<String>(
+  onAccept: (data) => print('Received: $data'),
+)
 ```
 
 ### Layout Extensions
@@ -88,67 +98,70 @@ Container(child: Text('Tap me')).ripple(onTap: () {})
 | Extension | Description |
 |-----------|-------------|
 | `.padding(16)` | Padding all sides |
-| `.paddingH(16)` | Horizontal padding |
-| `.paddingV(8)` | Vertical padding |
-| `.paddingSymmetric()` | Symmetric padding |
-| `.paddingOnly()` | Custom padding |
+| `.paddingH(16)` / `.paddingV(8)` | Horizontal/Vertical padding |
+| `.paddingSymmetric()` / `.paddingOnly()` | Custom padding |
+| `.margin(16)` / `.marginH()` / `.marginV()` | Margin helpers |
 | `.centered()` | Center widget |
 | `.align(Alignment.topRight)` | Align widget |
-| `.expanded()` | Wrap with Expanded |
-| `.flexible()` | Wrap with Flexible |
-| `.size(width: 100, height: 50)` | Fixed size |
-| `.square(48)` | Square dimensions |
-| `.fullWidth()` | Full available width |
-| `.safeArea()` | Wrap with SafeArea |
-| `.sliverBox()` | SliverToBoxAdapter |
+| `.expanded()` / `.flexible()` | Flex wrappers |
+| `.size()` / `.square(48)` / `.fullWidth()` | Sizing helpers |
+| `.scrollable()` | SingleChildScrollView wrapper |
+| `.positioned()` / `.positionedFill()` | Stack positioning |
+| `.intrinsicWidth()` / `.intrinsicHeight()` | Intrinsic sizing |
+| `.safeArea()` / `.sliverBox()` | Layout wrappers |
 
 ```dart
+// Layout chain
 Text('Hello')
     .padding(16)
     .centered()
     .fullWidth()
 
-// In a Row/Column
-Text('Expand me').expanded(flex: 2)
+// Scrollable content
+Column(children: [...]).scrollable()
+
+// Stack positioning
+Icon(Icons.close).positioned(top: 8, right: 8)
 ```
 
 ### Styling Extensions
 
 | Extension | Description |
 |-----------|-------------|
-| `.rounded(12)` | Rounded corners |
-| `.roundedOnly()` | Custom corner radius |
-| `.circular()` | Clip to circle |
-| `.withShadow()` | Add box shadow |
+| `.rounded(12)` / `.roundedOnly()` / `.circular()` | Border radius |
+| `.withShadow()` / `.glow()` | Shadows and glow effects |
+| `.glassmorphism()` | Frosted glass effect |
+| `.shimmer()` | Shimmer loading animation |
+| `.neumorphism()` | Soft UI / neumorphic effect |
+| `.shaderMask()` | Gradient text/icons |
 | `.opacity(0.5)` | Set opacity |
-| `.rotate(45)` | Rotate by degrees |
-| `.scale(1.5)` | Scale transform |
-| `.translate(x: 10)` | Translate position |
-| `.flipH()` / `.flipV()` | Flip horizontally/vertically |
-| `.blur(10)` | Blur effect (glassmorphism) |
-| `.withBorder()` | Add border |
-| `.withGradient()` | Gradient background |
-| `.withBackground()` | Color background |
+| `.rotate(45)` / `.scale(1.5)` / `.translate()` | Transforms |
+| `.flipH()` / `.flipV()` | Flip transforms |
+| `.blur(10)` | Blur effect |
+| `.withBorder()` / `.withGradient()` / `.withBackground()` | Decorations |
 
 ```dart
-// Styled card
-Container(child: Text('Card'))
+// Glassmorphism card
+Container(child: Text('Frosted Card'))
     .padding(16)
-    .withBackground(Colors.white)
-    .rounded(12)
-    .withShadow(blur: 20, color: Colors.black12)
+    .glassmorphism(blur: 10, opacity: 0.1)
 
-// Glassmorphism
+// Shimmer loading
 Container(
-  color: Colors.white.withOpacity(0.1),
-  child: Text('Frosted'),
-).blur(10).rounded(16)
+  width: 200,
+  height: 50,
+  color: Colors.grey[300],
+).shimmer()
 
-// Gradient background
-Text('Gradient').withGradient(
-  colors: [Colors.blue, Colors.purple],
-  borderRadius: BorderRadius.circular(8),
-)
+// Neumorphism
+Container(
+  padding: EdgeInsets.all(20),
+  child: Icon(Icons.star),
+).neumorphism()
+
+// Gradient text
+Text('Gradient Text', style: TextStyle(fontSize: 24))
+    .shaderMask(colors: [Colors.blue, Colors.purple])
 ```
 
 ### Visibility Extensions
@@ -156,25 +169,31 @@ Text('Gradient').withGradient(
 | Extension | Description |
 |-----------|-------------|
 | `.visible(condition)` | Show/hide (maintains space) |
-| `.gone(condition)` | Remove from tree if true |
-| `.showIf(condition)` | Show only if true |
+| `.gone(condition)` / `.showIf(condition)` | Conditional rendering |
 | `.showOrElse(condition, otherwise)` | Show this or alternative |
-| `.absorbPointer(condition)` | Disable interactions |
-| `.ignorePointer()` | Ignore touch events |
-| `.fadeVisible(condition)` | Animated fade |
-| `.scaleVisible(condition)` | Animated scale |
-| `.slideVisible(condition)` | Animated slide |
+| `.absorbPointer()` / `.ignorePointer()` | Pointer control |
+| `.fadeVisible()` / `.scaleVisible()` / `.slideVisible()` | Animated visibility |
+| `.fadeScaleVisible()` | Combined fade + scale |
+| `.rotateVisible()` | Rotation-based visibility |
+| `.animatedSwitcher()` | Animated widget switching |
+| `.crossFade()` | AnimatedCrossFade wrapper |
 
 ```dart
 // Conditional rendering
 AdminPanel().showIf(isAdmin)
 
-// Remove if condition is true
-EditButton().gone(!isOwner)
-
 // Animated visibility
 Content().fadeVisible(isLoaded)
-FloatingButton().scaleVisible(isExpanded)
+FloatingButton().fadeScaleVisible(isExpanded)
+
+// Animated switching
+currentWidget.animatedSwitcher(key: ValueKey(selectedIndex))
+
+// Cross-fade between states
+LoadingWidget().crossFade(
+  showFirst: isLoading,
+  secondChild: ContentWidget(),
+)
 ```
 
 ### General Extensions
@@ -184,18 +203,24 @@ FloatingButton().scaleVisible(isExpanded)
 | `.tooltip('message')` | Add tooltip |
 | `.semanticsLabel('label')` | Accessibility label |
 | `.hero('tag')` | Hero animation tag |
-| `.material()` | Wrap with Material |
+| `.material()` / `.card()` | Material wrappers |
+| `.inkWell()` | InkWell wrapper |
 | `.repaintBoundary()` | Performance optimization |
-| `.fitted()` | FittedBox wrapper |
-| `.aspectRatio(16/9)` | Aspect ratio |
-| `.fractionalSize()` | Proportional sizing |
+| `.keyedSubtree(key)` | Force widget rebuild |
+| `.decorated()` | DecoratedBox wrapper |
+| `.coloredBox()` | Efficient background color |
+| `.focus()` | Focus management |
+| `.fitted()` / `.aspectRatio()` / `.fractionalSize()` | Sizing helpers |
 
 ```dart
 // Hero animation
 Image.asset('photo.jpg').hero('photo_1')
 
-// Accessibility
-Icon(Icons.add).semanticsLabel('Add new item')
+// Card wrapper
+ListTile(...).card(elevation: 4)
+
+// Force rebuild with key
+MyWidget().keyedSubtree(ValueKey('unique_key'))
 ```
 
 ## Chaining Extensions

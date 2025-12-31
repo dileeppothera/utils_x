@@ -150,4 +150,117 @@ extension VisibilityExtensions on Widget {
       child: this,
     );
   }
+
+  /// Wraps the widget with AnimatedSwitcher for smooth transitions.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// currentWidget.animatedSwitcher(key: ValueKey(selectedIndex))
+  /// ```
+  Widget animatedSwitcher({
+    Key? key,
+    Duration duration = const Duration(milliseconds: 300),
+    Duration? reverseDuration,
+    Curve switchInCurve = Curves.linear,
+    Curve switchOutCurve = Curves.linear,
+    AnimatedSwitcherTransitionBuilder? transitionBuilder,
+    AnimatedSwitcherLayoutBuilder? layoutBuilder,
+  }) {
+    return AnimatedSwitcher(
+      duration: duration,
+      reverseDuration: reverseDuration,
+      switchInCurve: switchInCurve,
+      switchOutCurve: switchOutCurve,
+      transitionBuilder: transitionBuilder ??
+          (child, animation) => FadeTransition(
+                opacity: animation,
+                child: child,
+              ),
+      layoutBuilder: layoutBuilder ?? AnimatedSwitcher.defaultLayoutBuilder,
+      child: KeyedSubtree(
+        key: key,
+        child: this,
+      ),
+    );
+  }
+
+  /// Wraps the widget with AnimatedCrossFade for cross-fade transitions.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// LoadingWidget().crossFade(
+  ///   showFirst: isLoading,
+  ///   secondChild: ContentWidget(),
+  /// )
+  /// ```
+  Widget crossFade({
+    required bool showFirst,
+    required Widget secondChild,
+    Duration duration = const Duration(milliseconds: 300),
+    Curve firstCurve = Curves.linear,
+    Curve secondCurve = Curves.linear,
+    Curve sizeCurve = Curves.linear,
+    AlignmentGeometry alignment = Alignment.topCenter,
+  }) {
+    return AnimatedCrossFade(
+      firstChild: this,
+      secondChild: secondChild,
+      crossFadeState:
+          showFirst ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+      duration: duration,
+      firstCurve: firstCurve,
+      secondCurve: secondCurve,
+      sizeCurve: sizeCurve,
+      alignment: alignment,
+    );
+  }
+
+  /// Animates the widget in/out with rotation.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// Icon(Icons.expand_more).rotateVisible(isExpanded)
+  /// ```
+  Widget rotateVisible(
+    bool visible, {
+    Duration duration = const Duration(milliseconds: 300),
+    Curve curve = Curves.easeInOut,
+    double hiddenTurns = 0.5,
+  }) {
+    return AnimatedRotation(
+      turns: visible ? 0 : hiddenTurns,
+      duration: duration,
+      curve: curve,
+      child: this,
+    );
+  }
+
+  /// Combines fade and scale animations for visibility.
+  ///
+  /// ## Example
+  ///
+  /// ```dart
+  /// FloatingButton().fadeScaleVisible(isVisible)
+  /// ```
+  Widget fadeScaleVisible(
+    bool visible, {
+    Duration duration = const Duration(milliseconds: 300),
+    Curve curve = Curves.easeInOut,
+    double hiddenScale = 0.8,
+  }) {
+    return AnimatedOpacity(
+      opacity: visible ? 1.0 : 0.0,
+      duration: duration,
+      curve: curve,
+      child: AnimatedScale(
+        scale: visible ? 1.0 : hiddenScale,
+        duration: duration,
+        curve: curve,
+        child: this,
+      ),
+    );
+  }
 }
