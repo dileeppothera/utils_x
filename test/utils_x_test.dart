@@ -62,6 +62,31 @@ void main() {
       final opacity = tester.widget<Opacity>(find.byType(Opacity));
       expect(opacity.opacity, equals(0.5));
     });
+
+    testWidgets('glassmorphism applies ClipRRect and BackdropFilter',
+        (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(home: const Text('Test').glassmorphism()),
+      );
+
+      expect(find.byType(ClipRRect), findsOneWidget);
+      expect(find.byType(BackdropFilter), findsOneWidget);
+    });
+
+    testWidgets('neumorphism creates container with shadows', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(home: const Text('Test').neumorphism()),
+      );
+
+      final containerFinder = find.ancestor(
+        of: find.text('Test'),
+        matching: find.byType(Container),
+      );
+
+      final container = tester.widget<Container>(containerFinder);
+      final decoration = container.decoration as BoxDecoration;
+      expect(decoration.boxShadow?.length, equals(2));
+    });
   });
 
   group('Visibility Extensions', () {

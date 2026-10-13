@@ -246,7 +246,7 @@ extension StylingExtensions on Widget {
     BorderRadius? borderRadius,
   }) {
     return withShadow(
-      color: color.withValues(alpha: opacity),
+      color: color.withOpacity(opacity),
       blur: blur,
       spreadRadius: spreadRadius,
       offset: Offset.zero,
@@ -293,12 +293,12 @@ extension StylingExtensions on Widget {
         filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
         child: Container(
           decoration: BoxDecoration(
-            color: color.withValues(alpha: opacity),
+            color: color.withOpacity(opacity),
             borderRadius: borderRadius,
             border: borderColor != null
                 ? Border.all(color: borderColor, width: borderWidth)
                 : Border.all(
-                    color: Colors.white.withValues(alpha: 0.2),
+                    color: Colors.white.withOpacity(0.2),
                     width: borderWidth,
                   ),
           ),
@@ -356,8 +356,8 @@ extension StylingExtensions on Widget {
     BorderRadius borderRadius = const BorderRadius.all(Radius.circular(12)),
     bool isPressed = false,
   }) {
-    final lightShadow = Colors.white.withValues(alpha: intensity);
-    final darkShadow = Colors.black.withValues(alpha: intensity * 0.3);
+    final lightShadow = Colors.white.withOpacity(intensity);
+    final darkShadow = Colors.black.withOpacity(intensity * 0.3);
 
     return Container(
       decoration: BoxDecoration(
